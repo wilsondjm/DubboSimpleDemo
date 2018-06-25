@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd 
+       http://code.alibabatech.com/schema/dubbo 
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="dubbodemo"/>
+    <dubbo:consumer timeout="30000"/>
+    <dubbo:protocol name="dubbo" port="20080" host="10.0.0.2"/>
+    <dubbo:registry protocol="zookeeper" address="10.0.0.18:2181,10.0.0.18:3181,10.0.0.18:4181" />
+
+    <dubbo:reference id="greetingsService" interface="me.vincent.service.GreetingsService"
+         version="1.0" check="false" />
+    
+    <!-- <dubbo:reference id="loaResourceService" interface="com.ucenter.api.loa.service.ILoaResourceService"
+        url="dubbo://${dubbo.ucenter.address}/com.ucenter.api.loa.service.ILoaResourceService" version="1.0" check="false" />
+    
+    <dubbo:reference id="loaFunctionService" interface="com.ucenter.api.loa.service.ILoaFunctionService"
+        url="dubbo://${dubbo.ucenter.address}/com.ucenter.api.loa.service.ILoaFunctionService" version="1.0" check="false" />
+        
+    <dubbo:reference id="employeeService" interface="com.ucenter.api.organization.service.IEmployeeService"
+        url="dubbo://${dubbo.ucenter.address}/com.ucenter.api.organization.service.IEmployeeService" version="1.0" check="false" /> -->
+</beans>
